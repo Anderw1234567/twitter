@@ -26,7 +26,11 @@ def nicks_followers():
     fols = api.followers_ids("NickT231")
     for u in fols:
         user = api.get_user(u)
-        print(user.screen_name)
+        try:
+            userFols = api.followers_ids(u)
+            print("{} has {} followers.".format(user.screen_name, len(userFols)))
+        except:
+            print("{} won't let us see their followers :(".format(user.screen_name))
     return 'nicks followers!'
     
 
